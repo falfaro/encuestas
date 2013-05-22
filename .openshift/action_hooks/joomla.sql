@@ -19,7 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `joomla`
 --
-CREATE DATABASE `joomla` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `joomla`;
 
 -- --------------------------------------------------------
