@@ -14,7 +14,7 @@ defined('_JEXEC') or die('Restricted access');
 <h2><?php echo $this->msg; ?></h2>
 
 <?php
-if ($this->open_polls)
+if ($this->openPolls)
   {
 ?>
 <table>
@@ -22,15 +22,15 @@ if ($this->open_polls)
     <th>ID</th>
     <th>Nombre</th>
   </tr>
-<?php
-    foreach($this->open_polls as $open_poll)
-      {
-	echo "<tr>";
-	echo "<td>$open_poll->id</td>";
-	echo "<td>$open_poll->nombre</td>";
-	echo "</tr>";
-      }
-?>
+  <?php foreach($this->openPolls as $openPoll): ?>
+    <?php
+      $link = JRoute::_( "index.php?option=com_encuestas&view=encuesta&id={$openPoll->id}" );
+    ?>
+  <tr>
+     <td><a href="<?php echo $link; ?>"><?php echo $openPoll->id; ?></a></td>
+     <td><?php echo $openPoll->nombre; ?></td>
+  </tr>
+  <?php endforeach; ?>
 </table>
 <?php
   }

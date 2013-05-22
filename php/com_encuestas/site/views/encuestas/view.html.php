@@ -15,7 +15,7 @@ class EncuestasViewEncuestas extends JView
   {
     // Assign data to the view
     $this->msg = $this->get('Msg');
-    $this->open_polls = $this->get('OpenPolls');
+    $this->openPolls = $this->get('OpenPolls');
  
     // Check for errors.
     if (count($errors = $this->get('Errors'))) 
