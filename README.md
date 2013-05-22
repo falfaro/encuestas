@@ -1,4 +1,4 @@
-joomla2.5-openshift
-===================
+encuestas
+=========
 
-Joomla 2.5 deployment on OpenShift
+Encuestas en la Web @UPSAM
