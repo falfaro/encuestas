@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.1" method="upgrade">
+
+        <name>Encuestas</name>
+        <creationDate>May 2013</creationDate>
+        <author>Felipe Alfaro Solana</author>
+        <authorEmail>felipe.alfaro@gmail.com</authorEmail>
+        <authorUrl>http://blog.felipe-alfaro.com/</authorUrl>
+        <copyright>Copyright 2013 Felipe Alfaro Solana</copyright>
+        <license>GNU GPL v3</license>
+        <!--  The version string is recorded in the components table -->
+        <version>0.0.6</version>
+        <!-- The description is optional and defaults to the name -->
+        <description>Aplicacion Encuestas en la Web</description>
+ 
+        <install> <!-- Runs on install -->
+                <sql>
+                        <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+                </sql>
+        </install>
+        <uninstall> <!-- Runs on uninstall -->
+                <sql>
+                        <file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+                </sql>
+        </uninstall>
+        <update> <!-- Runs on update; New in 2.5 -->
+                <schemas>
+                        <schemapath type="mysql">sql/updates/mysql</schemapath>
+                </schemas>
+        </update>
+
+        <!-- Site Main File Copy Section -->
+        <!-- Note the folder attribute: This attribute describes the folder
+                to copy FROM in the package to install therefore files copied
+                in this section are copied from /site/ in the package -->
+        <files folder="site">
+                <filename>controller.php</filename>
+                <filename>encuestas.php</filename>
+                <filename>index.html</filename>
+                <folder>models</folder>
+                <folder>views</folder>
+        </files>
+ 
+        <administration>
+                <!-- Administration Menu Section -->
+                <menu>Encuestas</menu>
+
+                <files folder="admin">
+                        <!-- Admin Main File Copy Section -->
+                        <filename>encuestas.php</filename>
+                        <filename>index.html</filename>
+                        <!-- SQL files section -->
+                        <folder>sql</folder>
+                </files>
+        </administration>
+
+</extension>
