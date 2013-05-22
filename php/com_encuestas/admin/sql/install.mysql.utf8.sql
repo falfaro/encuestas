@@ -18,3 +18,7 @@ CREATE TABLE `#__elementos_encuestas` (
    PRIMARY KEY  (`id`),
    FOREIGN KEY  (`id_encuesta`) REFERENCES `#__encuestas` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+INSERT INTO `#__encuestas` (`nombre`, `descripcion`, `fecha_inicio`, `fecha_fin`) VALUES
+       ('Windows 8', 'Te gusta Windows 8?', '2013-05-20 00:00:00', NULL),
+       ('Android', 'Que version de Android usas?', '2013-05-20 00:00:00', NULL);
