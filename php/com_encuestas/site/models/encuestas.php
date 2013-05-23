@@ -11,24 +11,6 @@ jimport('joomla.application.component.modelitem');
 class EncuestasModelEncuestas extends JModelItem
 {
   /**
-   * @var string msg
-   */
-  protected $msg;
- 
-  /**
-   * Get the message
-   * @return string The message to be displayed to the user
-   */
-  public function getMsg() 
-  {
-    if (!isset($this->msg)) 
-      {
-	$this->msg = 'Lista de encuestas disponibles actualmente';
-      }
-    return $this->msg;
-  }
-
-  /**
    * Metodo para recuperar los nombres de las encuestas que estan
    * actualmente abiertas para votar.
    */
@@ -38,8 +20,19 @@ class EncuestasModelEncuestas extends JModelItem
     $query = $db->getQuery(true);
     $query->select('id,nombre');
     $query->from('#__encuestas');
-    $db->setQuery((string)$query);
-    $poll_names = $db->loadObjectList();
-    return $poll_names;
+    $db->setQuery($query);
+    return $db->loadObjectList();
+  }
+
+  public function getPoll()
+  {
+    $pollId = JRequest::getVar('pollId',  1);
+    $db = JFactory::getDBO();
+    $query = $db->getQuery(true);
+    //    $query->select('id,nombre');
+    $query->from('#__encuestas');
+    $query->where('id=' . $pollId);
+    $db->setQuery($query);
+    return $db->loadObject();
   }
 }

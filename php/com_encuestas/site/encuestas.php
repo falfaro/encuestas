@@ -10,10 +10,7 @@ jimport('joomla.application.component.controller');
 // Joomla will look for the declaration of that class in an aptly named
 // file called controller.php (it's a default behavior).
 $controller = JController::getInstance('Encuestas');
- 
 // Perform the Request task
-$input = JFactory::getApplication()->input;
-$controller->execute($input->getCmd('task'));
- 
-// Redirect if set by the controller
+$controller->execute(JRequest::getCmd('task'));
+// Redirect if set by the controller 
 $controller->redirect();
