@@ -1,5 +1,4 @@
 <?php
-// No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 ?>
 
@@ -13,14 +12,8 @@ defined('_JEXEC') or die('Restricted access');
 
 <h2>Lista de encuestas disponibles actualmente</h2>
 
-<p>view  = <?php echo JRequest::getVar('view'); ?></p>
-<p>model = <?php echo JRequest::getVar('model'); ?></p>
+<?php if($this->openPolls): ?>
 
-<?php
-
-if ($this->openPolls)
-  {
-?>
 <table>
   <tr>
     <th>ID</th>
@@ -36,12 +29,9 @@ if ($this->openPolls)
   </tr>
   <?php endforeach; ?>
 </table>
-<?php
-  }
-else
-  {
-?>
+
+<?php else: ?>
+
 <p>No hay encuestas disponibles abiertas.</p>
-<?php
-  }
-?>
+
+<?php endif; ?>
