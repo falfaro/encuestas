@@ -23,16 +23,4 @@ class EncuestasModelEncuestas extends JModelItem
     $db->setQuery($query);
     return $db->loadObjectList();
   }
-
-  public function getPoll()
-  {
-    $pollId = JRequest::getVar('pollId',  1);
-    $db = JFactory::getDBO();
-    $query = $db->getQuery(true);
-    //    $query->select('id,nombre');
-    $query->from('#__encuestas');
-    $query->where('id=' . $pollId);
-    $db->setQuery($query);
-    return $db->loadObject();
-  }
 }

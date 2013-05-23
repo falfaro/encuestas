@@ -2,41 +2,36 @@
 defined('_JEXEC') or die('Restricted access');
 ?>
 
-<style type="text/css">
-  table {
-    border-collapse:separate;
-    border-spacing: 5px;
-  }
-  th, td { padding: 5px; }
-</style>
-
-<h2>Detalles de la encuesta</h2>
-
 <?php if(JDEBUG): ?>
 <p><?php var_dump($this->poll); ?></p>
 <?php endif; ?>
 
-<table>
-  <tr>
-    <td>ID</td>
-    <td><?php echo $this->poll->id; ?></td>
-  </tr>
-  <tr>
-    <td>Nombre</td>
-    <td><?php echo $this->poll->nombre; ?></td>
-  </tr>
-  <tr>
-    <td>Descripcion</td>
-    <td><?php echo $this->poll->descripcion; ?></td>
-  </tr>
-  <tr>
-    <td>Fecha inicio</td>
-    <td><?php echo $this->poll->fecha_inicio; ?></td>
-  </tr>
+<h1>Encuesta <?php echo $this->poll->nombre; ?></h1>
+
+<?php
+
+$html = "";
+$html = $html . '<form method="post">';
+$html = $html . '<fieldset>';
+$html = $html . '<legend><strong>' . $this->poll->descripcion . '</strong></legend>';
+
+foreach($this->poll->elementos as $elemento)
+{
+  $html = $html . "<input type = 'radio'";
+  $html = $html .       " name = 'voto' ";
+  $html = $html .       " id = '$elemento->id'";
+  $html = $html .       " value = '$elemento->id'";
+  $html = $html . "/>" . $elemento->nombre . "<p/>";
+}
+
+$html = $html . '</fieldset>';
+$html = $html . '</form>';
+echo $html;
+
+?>
+
+La encuesta <?php echo $this->poll->nombre; ?> fue creada el dia <?php echo $this->poll->fecha_inicio; ?>
 <?php if($this->poll->fecha_fin): ?>
-  <tr>
-    <td>Fecha fin</td>
-    <td><?php echo $this->poll->fecha_fin; ?></td>
-  </tr>
+ y su plazo de vigencia terminara el dia <?php echo $this->poll->fecha_fin; ?>
 <?php endif; ?>
-</table>
+.</p>
