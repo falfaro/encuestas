@@ -2,8 +2,8 @@
 defined('_JEXEC') or die('Restricted access');
 
 if(JDEBUG) {
-  var_dump($this->poll);
-  echo "<p>ID sesion: " . JFactory::getSession()->getId() . "</p>";
+  echo var_dump($this->poll) . "<br/>";
+  echo "ID sesion: " . JFactory::getSession()->getId() . "<br/>";
 }
 ?>
 
@@ -22,6 +22,12 @@ foreach($this->poll->elementos as $elemento)
   $html = $html .       " id = '$elemento->id'";
   $html = $html .       " value = '$elemento->id'";
   $html = $html . "/>" . $elemento->nombre . "<p/>";
+}
+
+if($this->poll->votos == 0) {
+  $html = $html . "<input type='submit' value='Votar' />";
+} else {
+  $html = $html . "<input type='submit' value='Votar' disabled />";
 }
 
 $html = $html . '</fieldset>';

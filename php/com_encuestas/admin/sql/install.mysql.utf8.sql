@@ -21,7 +21,7 @@ CREATE TABLE `#__elementos_encuestas` (
   `nombre` varchar(256) NOT NULL,
   `descripcion` varchar(256),
    PRIMARY KEY  (`id`),
-   FOREIGN KEY  (`id_encuesta`) REFERENCES `#__encuestas` (`id`)
+   FOREIGN KEY  (`id_encuesta`) REFERENCES `#__encuestas` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 INSERT INTO `#__elementos_encuestas` (`id`, `id_encuesta`, `nombre`, `descripcion`) VALUES
@@ -38,10 +38,10 @@ CREATE TABLE `#__votos` (
   `id_elemento_encuesta` int(11) NOT NULL,
   `id_sesion` varchar(256) NOT NULL,
    PRIMARY KEY  (`id`),
-   FOREIGN KEY  (`id_encuesta`) REFERENCES `#__encuestas` (`id`),
-   FOREIGN KEY  (`id_elemento_encuesta`) REFERENCES `#__elementos_encuestas` (`id`)
+   FOREIGN KEY  (`id_encuesta`) REFERENCES `#__encuestas` (`id`) ON DELETE CASCADE,
+   FOREIGN KEY  (`id_elemento_encuesta`) REFERENCES `#__elementos_encuestas` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 INSERT INTO `#__votos` (`id`, `id_encuesta`, `id_elemento_encuesta`, `id_sesion`) VALUES
        (1, 1, 1, 'pnonj3800hah039uv0q255udq7'),
-       (2, 6, 2, 'pnonj3800hah039uv0q255udq7');
+       (2, 2, 6, 'pnonj3800hah039uv0q255udq7');

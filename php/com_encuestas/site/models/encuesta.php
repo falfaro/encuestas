@@ -45,13 +45,14 @@ class EncuestasModelEncuesta extends JModelItem
     */
     // Determina si esta sesion de usuario ya ha votado en esta
     // encuesta.
+    $idSesion = JFactory::getSession()->getId();
     $query = $db->getQuery(true);
-    $query->select('count(*)');
-    $query->from('#__votos');
-    $query->where('id_encuesta=' . $pollId);
-    $query->where('id_sesion=' . JFactory::getSession()->getId());
+    $query->select("count(*)");
+    $query->from("#__votos");
+    $query->where("id_encuesta=$pollId");
+    $query->where("id_sesion='$idSesion'");
     $db->setQuery($query);
-    $encuesta->votos = $db->loadloadResult();
+    $encuesta->votos = $db->loadResult();
 
     return $encuesta;
   }
