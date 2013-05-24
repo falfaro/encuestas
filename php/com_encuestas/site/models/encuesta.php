@@ -20,7 +20,7 @@ class EncuestasModelEncuesta extends JModelItem
     $query->from('#__encuestas');
     $query->where('id=' . $pollId);
     $db->setQuery($query);
-    $poll = $db->loadObject();
+    $encuesta = $db->loadObject();
 
     // Carga los elementos que conforman la encuesta.
     $query = $db->getQuery(true);
@@ -28,8 +28,31 @@ class EncuestasModelEncuesta extends JModelItem
     $query->from('#__elementos_encuestas');
     $query->where('id_encuesta=' . $pollId);
     $db->setQuery($query);
-    $poll->elementos = $db->loadObjectList();
+    $encuesta->elementos = $db->loadObjectList();
 
-    return $poll;
+    /*
+    $user = JFactory::getUser();
+    if($user) {
+      // Determina si el usuario ya ha votado en esta encuesta.
+      $query = $db->getQuery(true);
+      $query->select('id');
+      $query->from('#__votos');
+      $query->where('id_encuesta=' . $pollId);
+      $query->where('id_usuario=' . $user->id);
+      $db->setQuery($query);
+      $encuesta->votos = $db->loadObjectList();
+    }
+    */
+    // Determina si esta sesion de usuario ya ha votado en esta
+    // encuesta.
+    $query = $db->getQuery(true);
+    $query->select('count(*)');
+    $query->from('#__votos');
+    $query->where('id_encuesta=' . $pollId);
+    $query->where('id_sesion=' . JFactory::getSession()->getId());
+    $db->setQuery($query);
+    $encuesta->votos = $db->loadloadResult();
+
+    return $encuesta;
   }
 }

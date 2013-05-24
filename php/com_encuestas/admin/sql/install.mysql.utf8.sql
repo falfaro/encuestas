@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS `#__votaciones`;
+DROP TABLE IF EXISTS `#__votos`;
 DROP TABLE IF EXISTS `#__elementos_encuestas`;
 DROP TABLE IF EXISTS `#__elementos`;
 
@@ -31,3 +31,17 @@ INSERT INTO `#__elementos_encuestas` (`id`, `id_encuesta`, `nombre`, `descripcio
        (4, 2, 'Honeycomb', 'Version 3.x'),
        (5, 2, 'Ice Cream Sandwich', 'Version 4.0'),
        (6, 2, 'Jelly Bean', 'Version 4.1, 4.2');
+
+CREATE TABLE `#__votos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_encuesta` int(11) NOT NULL,
+  `id_elemento_encuesta` int(11) NOT NULL,
+  `id_sesion` varchar(256) NOT NULL,
+   PRIMARY KEY  (`id`),
+   FOREIGN KEY  (`id_encuesta`) REFERENCES `#__encuestas` (`id`),
+   FOREIGN KEY  (`id_elemento_encuesta`) REFERENCES `#__elementos_encuestas` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+INSERT INTO `#__votos` (`id`, `id_encuesta`, `id_elemento_encuesta`, `id_sesion`) VALUES
+       (1, 1, 1, 'pnonj3800hah039uv0q255udq7'),
+       (2, 6, 2, 'pnonj3800hah039uv0q255udq7');

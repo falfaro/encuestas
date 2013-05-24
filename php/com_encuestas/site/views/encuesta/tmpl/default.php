@@ -1,15 +1,15 @@
 <?php
 defined('_JEXEC') or die('Restricted access');
-?>
 
-<?php if(JDEBUG): ?>
-<p><?php var_dump($this->poll); ?></p>
-<?php endif; ?>
+if(JDEBUG) {
+  var_dump($this->poll);
+  echo "<p>ID sesion: " . JFactory::getSession()->getId() . "</p>";
+}
+?>
 
 <h1>Encuesta <?php echo $this->poll->nombre; ?></h1>
 
 <?php
-
 $html = "";
 $html = $html . '<form method="post">';
 $html = $html . '<fieldset>';
