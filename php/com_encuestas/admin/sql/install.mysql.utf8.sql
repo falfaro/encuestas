@@ -37,11 +37,14 @@ CREATE TABLE `#__votos` (
   `id_encuesta` int(11) NOT NULL,
   `id_elemento_encuesta` int(11) NOT NULL,
   `id_sesion` varchar(256) NOT NULL,
+  `fecha` datetime NOT NULL,
    PRIMARY KEY  (`id`),
    FOREIGN KEY  (`id_encuesta`) REFERENCES `#__encuestas` (`id`) ON DELETE CASCADE,
    FOREIGN KEY  (`id_elemento_encuesta`) REFERENCES `#__elementos_encuestas` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
-INSERT INTO `#__votos` (`id`, `id_encuesta`, `id_elemento_encuesta`, `id_sesion`) VALUES
-       (1, 1, 1, 'pnonj3800hah039uv0q255udq7'),
-       (2, 2, 6, 'pnonj3800hah039uv0q255udq7');
+INSERT INTO `#__votos` (`id`, `id_elemento_encuesta`, `id_encuesta`, `id_sesion`, `fecha`) VALUES
+       (1, 1, 1, 'pnonj3800hah039uv0q255udq7', '2013-05-20 00:00:00'),
+       (2, 6, 2, 'pnonj3800hah039uv0q255udq7', '2013-05-20 00:00:00'),
+       (3, 1, 1, '85a6a2dc0e0792d1c745ce79252fda9c', '2013-05-20 00:00:00'),
+       (4, 6, 2, '85a6a2dc0e0792d1c745ce79252fda9c', '2013-05-20 00:00:00');
