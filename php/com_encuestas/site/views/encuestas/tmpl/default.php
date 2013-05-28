@@ -21,7 +21,7 @@ defined('_JEXEC') or die('Restricted access');
   </tr>
   <?php foreach($this->openPolls as $openPoll): ?>
     <?php
-      $link = JRoute::_( "index.php?option=com_encuestas&view=encuesta&pollId={$openPoll->id}" );
+      $link = JRoute::_( "index.php?option=com_encuestas&view=encuesta&id={$openPoll->id}" );
     ?>
   <tr>
      <td><a href="<?php echo $link; ?>"><?php echo $openPoll->id; ?></a></td>

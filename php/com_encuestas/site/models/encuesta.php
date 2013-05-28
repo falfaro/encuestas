@@ -10,50 +10,58 @@ class EncuestasModelEncuesta extends JModelItem
   /**
    * Metodo para recuperar los detalles de una encuesta.
    */
-  public function getPoll()
+  public function getEncuesta()
   {
     // Carga los detalles de la encuesta.
-    $pollId = JRequest::getVar('pollId',  1);
+    $id = JRequest::getVar('id',  1);
     $db = JFactory::getDBO();
     $query = $db->getQuery(true);
     $query->select('*');
     $query->from('#__encuestas');
-    $query->where('id=' . $pollId);
+    $query->where('id=' . $id);
     $db->setQuery($query);
     $encuesta = $db->loadObject();
 
-    // Carga los elementos que conforman la encuesta.
-    $query = $db->getQuery(true);
-    $query->select('*');
-    $query->from('#__elementos_encuestas');
-    $query->where('id_encuesta=' . $pollId);
-    $db->setQuery($query);
-    $encuesta->elementos = $db->loadObjectList();
-
-    /*
-    $user = JFactory::getUser();
-    if($user) {
-      // Determina si el usuario ya ha votado en esta encuesta.
-      $query = $db->getQuery(true);
-      $query->select('id');
-      $query->from('#__votos');
-      $query->where('id_encuesta=' . $pollId);
-      $query->where('id_usuario=' . $user->id);
-      $db->setQuery($query);
-      $encuesta->votos = $db->loadObjectList();
-    }
-    */
     // Determina si esta sesion de usuario ya ha votado en esta
     // encuesta.
     $idSesion = JFactory::getSession()->getId();
     $query = $db->getQuery(true);
     $query->select("count(*)");
     $query->from("#__votos");
-    $query->where("id_encuesta=$pollId");
+    $query->where("id_encuesta=$id");
     $query->where("id_sesion='$idSesion'");
     $db->setQuery($query);
-    $encuesta->votos = $db->loadResult();
+
+    $encuesta->votoPropio = ($db->loadResult() == 0) ? false : true;
+
+    if($encuesta->votoPropio) {
+      // El usuario ya ha votado. Carga informacion sobre el numero de
+      // votos de cada posible elemento de esta encuesta.
+      $query = $db->getQuery(true);
+      $query->select('e.id, e.nombre, count(v.id) as numero');
+      $query->from('#__elementos_encuestas e');
+      $query->leftJoin('#__votos v ON v.id_elemento_encuesta = e.id');
+      $query->where('e.id_encuesta=' . $id);
+      $query->group('e.id');
+      $query->order('numero');
+      $db->setQuery($query);
+      $encuesta->votos = $db->loadObjectList();
+    } else {
+      // Carga los elementos que conforman la encuesta para permitir l
+      // votacion.
+      $query = $db->getQuery(true);
+      $query->select('*');
+      $query->from('#__elementos_encuestas');
+      $query->where('id_encuesta=' . $id);
+      $db->setQuery($query);
+      $encuesta->elementos = $db->loadObjectList();
+    }
 
     return $encuesta;
+  }
+
+  public function votar($id_encuesta, $id_voto, $fecha) {
+    //    $query->insert('#__votos')->columns('id, title')->values('1,2');
+    return false;
   }
 }

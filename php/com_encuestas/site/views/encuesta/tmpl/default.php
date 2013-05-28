@@ -9,35 +9,49 @@ if(JDEBUG) {
 
 <h1>Encuesta <?php echo $this->poll->nombre; ?></h1>
 
-<?php
-$html = "";
-$html = $html . '<form method="post">';
-$html = $html . '<fieldset>';
-$html = $html . '<legend><strong>' . $this->poll->descripcion . '</strong></legend>';
+<?php if($this->poll->votoPropio):?>
 
-foreach($this->poll->elementos as $elemento)
-{
-  $html = $html . "<input type = 'radio'";
-  $html = $html .       " name = 'voto' ";
-  $html = $html .       " id = '$elemento->id'";
-  $html = $html .       " value = '$elemento->id'";
-  $html = $html . "/>" . $elemento->nombre . "<p/>";
-}
+  <p>No se puede votar: ya se ha votado con anterioridad.</p>
+  <table>
+      <tr>
+        <th>Nombre</th>
+        <th># votos</th>
+      </tr>
+    <?php foreach($this->poll->votos as $voto):?>
+      <tr>
+        <td><?php echo $voto->nombre;?></td>
+        <td><?php echo $voto->numero;?></td>
+      </tr>
+    <?php endforeach;?>
+  </table>
 
-if($this->poll->votos == 0) {
-  $html = $html . "<input type='submit' value='Votar' />";
-} else {
-  $html = $html . "<input type='submit' value='Votar' disabled />";
-}
+<?php else:?>
 
-$html = $html . '</fieldset>';
-$html = $html . '</form>';
-echo $html;
+  <form action="<?php echo JRoute::_('index.php'); ?>" method="get" name="poll_form2">
+    <input type="hidden" name="option" value="com_encuestas"/>
+    <input type="hidden" name="task" value="votar"/>
+    <input type="hidden" name="id" value="<?php echo $this->poll->id;?>"/>
+    <fieldset>
+      <legend><strong><?php echo $this->poll->descripcion;?></strong></legend>
+      <?php foreach($this->poll->elementos as $elemento):?>
+        <input type = "radio"
+               name = "id_voto"
+               id = "<?php echo $elemento->id;?>"
+               value = "<?php echo $elemento->id;?>" />
+        <?php echo $elemento->nombre;?>
+        <br/>
+      <?php endforeach;?>
+      <p/>
+      <div style="padding:2px; text-align:left;">
+        <input type="submit" name="task_button" class="button" value="Votar" />
+      </div>
+    </fieldset>
+  </form>
 
-?>
+<?php endif;?>
 
-La encuesta <?php echo $this->poll->nombre; ?> fue creada el dia <?php echo $this->poll->fecha_inicio; ?>
-<?php if($this->poll->fecha_fin): ?>
- y su plazo de vigencia terminara el dia <?php echo $this->poll->fecha_fin; ?>
-<?php endif; ?>
+<p>La encuesta <?php echo $this->poll->nombre;?> fue creada el dia <?php echo $this->poll->fecha_inicio;?>
+<?php if($this->poll->fecha_fin):?>
+ y su plazo de vigencia terminara el dia <?php echo $this->poll->fecha_fin;?>
+<?php endif;?>
 .</p>

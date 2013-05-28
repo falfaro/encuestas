@@ -1,13 +1,12 @@
 <?php
 defined('_JEXEC') or die('Restricted access');
 jimport('joomla.application.component.controller');
- 
-// Get an instance of the controller prefixed by Encuestas. It will
-// instantiate a controller object of a class named EncuestasController.
-// Joomla will look for the declaration of that class in an aptly named
-// file called controller.php (it's a default behavior).
+
+// Obtiene una instancia de la clase controlador cuyo nombre esta prefijado
+// con el nombre 'Encuestas'. Esta invocacion creara una instancia de una clase
+// denominada EncuestasController, definida en el archivo controller.php.
 $controller = JController::getInstance('Encuestas');
-// Perform the Request task
+// Ejecuta la tarea especificada.
 $controller->execute(JRequest::getCmd('task'));
-// Redirect if set by the controller 
+// Fuerza una redireccion si asi lo desea el controlador.
 $controller->redirect();
