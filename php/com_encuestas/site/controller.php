@@ -59,6 +59,6 @@ class EncuestasController extends JController {
     // correcta, se mostrara el numero de votos de cada opcion. Si el voto no se
     // ha podido realizar, se mostrara el error y se permitira al usuario volver a
     // intentar el voto.
-    $this->setRedirect(JRoute::_("index.php?option=com_encuestas&view=encuesta&id=$id_encuesta"), $msg, $tom);
+    $this->setRedirect(JRoute::_('index.php?view=encuesta&id=' . $id_encuesta), $msg, $tom);
   }
 }

@@ -26,7 +26,7 @@ if(JDEBUG) {
 
 <?php else:?>
 
-  <form action="<?php echo JRoute::_('index.php'); ?>" method="get" name="poll_form2">
+  <form action="<?php echo JRoute::_('index.php'); ?>" method="post" name="formulario_encuesta">
     <input type="hidden" name="option" value="com_encuestas"/>
     <input type="hidden" name="task" value="votar"/>
     <input type="hidden" name="id" value="<?php echo $this->poll->id;?>"/>
