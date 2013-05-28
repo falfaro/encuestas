@@ -10,8 +10,7 @@ if(JDEBUG) {
 <h1>Encuesta <?php echo $this->poll->nombre; ?></h1>
 
 <?php if($this->poll->votoPropio):?>
-
-  <p>No se puede votar: ya se ha votado con anterioridad.</p>
+  <!-- No se puede votar: ya se ha votado con anterioridad. -->
   <table>
       <tr>
         <th>Nombre</th>

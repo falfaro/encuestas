@@ -60,8 +60,16 @@ class EncuestasModelEncuesta extends JModelItem
     return $encuesta;
   }
 
-  public function votar($id_encuesta, $id_voto, $fecha) {
-    //    $query->insert('#__votos')->columns('id, title')->values('1,2');
-    return false;
+  public function votar($id_encuesta, $id_elemento_encuesta, $id_sesion, $fecha) {
+    $db = JFactory::getDBO();
+    $query = $db->getQuery(true);
+    $query->insert("#__votos");
+    $query->columns("id_elemento_encuesta,id_encuesta,id_sesion,fecha");
+    $query->values("$id_elemento_encuesta,$id_encuesta,'$id_sesion','$fecha'");
+    $db->setQuery($query);
+    if (!$db->query()) {
+      return $db->stderr();
+    }
+    return null;
   }
 }

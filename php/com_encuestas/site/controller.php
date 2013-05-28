@@ -1,4 +1,11 @@
 <?php
+/*
+ * @package    com_encuestas
+ * @copyright  2013 Felipe Alfaro Solana
+ * @license    GNU/GPL http://www.gnu.org/copyleft/gpl.html
+ * @link       http:/blog.felipe-alfaro.com/
+ */
+
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
  
@@ -21,32 +28,37 @@ class EncuestasController extends JController {
   }
 
   public function votar() {
-    // Comprueba que no se este intentando utilizar esta sesion de forma
-    // malintencionada.
-    //    JRequest::checkToken() or jexit('Invalid Token');
+    // Obtiene el identificador de encuesta y el identificador de la opcion
+    // que se esta votando.
+    $id_encuesta          = JRequest::getInt('id', 0);
+    $id_elemento_encuesta = JRequest::getInt('id_voto', 0);
 
-    echo "<p>Votando que es gerundio.</p>";
-
-    //    $mainframe  = JFactory::getApplication();
-    $id_encuesta = JRequest::getInt('id', 0);
-    $id_voto = JRequest::getInt('id_voto', 0);
-    $fecha =& JFactory::getDate();
-    //    $poll       =& JTable::getInstance('Poll', 'Table');
-
-    echo "<p>ID encuesta: $id_encuesta";
-    echo "<p>ID voto: $id_voto";
-    echo "<p>Fecha: $fecha";
-
-    $model = $this->getModel('Encuesta');
-
-    if ($model->votar($poll_id, $option_id, $fecha)) {
-      $msg = "<p>Gracias! Se ha votado correctamente.<p>";
-      $tom = "";
-    } else {
-      $msg = "<p>Se ha producido un error al votar.</p>";
+    if (!$id_encuesta || !$id_elemento_encuesta) {
+      // El identificador de encuesta o el identificador del elemento de la
+      // encuesta no han sido suministrados en la peticion HTTP.
+      $msg = "<p>La informacion suministrada para realizar el voto es incompleta.</p>";
       $tom = "error";
-    }
+    } else {
+      $id_sesion = JFactory::getSession()->getId();
+      $fecha     =& JFactory::getDate();
+      $model = $this->getModel('Encuesta');
 
-    //    $this->setRedirect(JRoute::_("index.php?option=com_encuestas&view=encuesta&id=$id_encuesta"), $msg, $tom);
+      $msg = $model->votar($id_encuesta, $id_elemento_encuesta, $id_sesion, $fecha);
+      if ($msg == null) {
+	// El voto se ha insertado en la base de datos correctamente.
+	$msg = "<p>Gracias! Se ha votado correctamente.<p>";
+	$tom = "";
+      } else {
+	// Ha ocurrido un error al insertar el voto en la base de datos.
+	$msg = "<p>Se ha producido un error al votar: $msg.</p>";
+	$tom = "error";
+      }
+    }
+    // Solicita la redireccion al controlador, usando la vista 'encuesta' para
+    // mostrar la informacion de la encuesta. Si el voto se ha realizado de forma
+    // correcta, se mostrara el numero de votos de cada opcion. Si el voto no se
+    // ha podido realizar, se mostrara el error y se permitira al usuario volver a
+    // intentar el voto.
+    $this->setRedirect(JRoute::_("index.php?option=com_encuestas&view=encuesta&id=$id_encuesta"), $msg, $tom);
   }
 }
