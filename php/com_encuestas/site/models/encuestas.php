@@ -11,10 +11,10 @@ jimport('joomla.application.component.modelitem');
 class EncuestasModelEncuestas extends JModelItem
 {
   /**
-   * Metodo para recuperar los nombres de las encuestas que estan
-   * actualmente abiertas para votar.
+   * Metodo para recuperar los nombres de las encuestas que existen
+   * en el sistema.
    */
-  public function getOpenPolls()
+  public function getEncuestas()
   {
     $db = JFactory::getDBO();
     $query = $db->getQuery(true);
