@@ -14,8 +14,8 @@ class EncuestasController extends JController
    */
   function display($cachable = false) 
   {
-    // Establece la vista por efecto a 'encuestas' (la lista de encuestas
-    // disponibles) en caso de que fuera necesario.
+    // Establece la vista por efecto a 'votos' (la lista de votos de todas
+    // las encuestas del sistema) en caso de que fuera necesario.
     $input = JFactory::getApplication()->input;
     $view = $input->getCmd('view');
     if (empty($view)) {
