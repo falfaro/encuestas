@@ -45,6 +45,7 @@ if(JDEBUG) {
         <input type="submit" name="task_button" class="button" value="Votar" />
       </div>
     </fieldset>
+    <?php echo JHTML::_('form.token'); ?>
   </form>
 
 <?php endif;?>

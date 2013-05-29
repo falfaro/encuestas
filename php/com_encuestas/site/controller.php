@@ -28,6 +28,10 @@ class EncuestasController extends JController {
   }
 
   public function votar() {
+    // Comprueba que no se estan intentado alterar los datos suministrados
+    // durante la votacion a traves del formulario.
+    JRequest::checkToken() or jexit('Invalid Token');
+
     // Obtiene el identificador de encuesta y el identificador de la opcion
     // que se esta votando.
     $id_encuesta          = JRequest::getInt('id', 0);
