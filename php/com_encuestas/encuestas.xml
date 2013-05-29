@@ -48,9 +48,9 @@
                 <files folder="admin">
                         <!-- Admin Main File Copy Section -->
                         <filename>controller.php</filename>
+                        <folder>controllers</folder>
                         <filename>encuestas.php</filename>
                         <filename>index.html</filename>
-                        <!-- SQL files section -->
                         <folder>models</folder>
                         <folder>sql</folder>
                         <folder>tables</folder>

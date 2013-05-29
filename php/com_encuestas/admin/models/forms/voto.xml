@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+  <fieldset>
+    <field
+	name="id"
+	type="hidden"
+	/>
+    <field
+	name="id_encuesta"
+	type="text"
+	label="ID encuesta"
+	description="ID encuesta"
+	size="40"
+	class="inputbox"
+	default=""
+	/>
+    <field
+	name="id_elemento_encuesta"
+	type="text"
+	label="ID elemento encuesta"
+	description="ID elemento encuesta"
+	size="40"
+	class="inputbox"
+	default=""
+	/>
+    <field
+	name="id_sesion"
+	type="text"
+	label="ID sesion"
+	description="ID sesion"
+	size="64"
+	class="inputbox"
+	default=""
+	/>
+    <field
+	name="fecha"
+	type="calendar"
+	label="Fecha"
+	description="Fecha del voto"
+	size="40"
+	class="inputbox"
+	default=""
+	/>
+  </fieldset>
+</form>

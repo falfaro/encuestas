@@ -25,7 +25,7 @@ if(JDEBUG) {
   </tr>
   <?php foreach($this->encuestas as $encuesta): ?>
     <?php
-      $link = JRoute::_( "index.php?option=com_encuestas&view=encuesta&id={$encuesta->id}" );
+      $link = JRoute::_( "index.php?view=encuesta&id={$encuesta->id}" );
     ?>
   <tr>
      <td><a href="<?php echo $link; ?>"><?php echo $encuesta->id; ?></a></td>

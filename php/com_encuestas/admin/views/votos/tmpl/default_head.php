@@ -1,6 +1,5 @@
 <?php
 defined('_JEXEC') or die('Restricted Access');
-dump($this->votos, 'Votos');
 ?>
 <tr>
   <th width="5">ID</th>

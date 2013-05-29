@@ -32,21 +32,20 @@ class EncuestasViewVotos extends JView
     $this->votos = $votos;
     $this->paginacion = $paginacion;
  
-    //    // Incluye la barra de herramientas.
-    //    $this->addToolBar();
+    // Incluye la barra de herramientas.
+    $this->addToolBar();
  
     // Muestra la plantilla.
     parent::display($tpl);
   }
  
-  //  /**
-  //   * Configura la barra de herramientas.
-  //   */
-  //  protected function addToolBar() 
-  //  {
-  //    JToolBarHelper::title(JText::_('COM_ENCUESTAS_MANAGER_VOTOS'));
-  //    JToolBarHelper::deleteList('', 'votos.delete');
-  //    JToolBarHelper::editList('voto.edit');
-  //    JToolBarHelper::addNew('voto.add');
-  //  }
+  /**
+    * Configura la barra de herramientas.
+    */
+  protected function addToolBar() {
+    JToolBarHelper::title('Gestion de votos');
+    JToolBarHelper::deleteList('', 'votos.delete');
+    JToolBarHelper::editList('voto.edit');
+    JToolBarHelper::addNew('voto.add');
+  }
 }

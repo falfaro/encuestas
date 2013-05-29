@@ -9,7 +9,7 @@ $controller = JController::getInstance('Encuestas');
 // Obtiene la tarea que se ha de ejecutar
 $jinput = JFactory::getApplication()->input;
 $task = $jinput->get('task', "", 'STR' );
- 
+
 // Ejecuta la tarea solicitada.
 $controller->execute($task);
  
