@@ -1,12 +1,9 @@
 <?php
-// No direct access to this file
 defined('_JEXEC') or die('Restricted access');
- 
-// import Joomla view library
 jimport('joomla.application.component.view');
  
 /**
- * HelloWorlds View
+ * Vista Votos
  */
 class EncuestasViewVotos extends JView
 {
@@ -16,12 +13,12 @@ class EncuestasViewVotos extends JView
    *                        automaticamente en todos los directorios de
    *                        plantillas.
    *
-   * @return  mixed  Una cadena, o un objeto JError en caso de error.
+   * @return  mixed         Una cadena, o un objeto JError en caso de error.
    */
   function display($tpl = null) 
   {
     // Obtiene datos acerca del modelo
-    $votos = $this->get('Votos');
+    $votos = $this->get('Items');
     $paginacion = $this->get('Pagination');
  
     // Comprueba si han habido errores.
@@ -35,21 +32,21 @@ class EncuestasViewVotos extends JView
     $this->votos = $votos;
     $this->paginacion = $paginacion;
  
-    // Incluye la barra de herramientas.
-    $this->addToolBar();
+    //    // Incluye la barra de herramientas.
+    //    $this->addToolBar();
  
     // Muestra la plantilla.
     parent::display($tpl);
   }
  
-  /**
-   * Configura la barra de herramientas.
-   */
-  protected function addToolBar() 
-  {
-    JToolBarHelper::title(JText::_('COM_ENCUESTAS_MANAGER_VOTOS'));
-    JToolBarHelper::deleteList('', 'votos.borrar');
-    JToolBarHelper::editList('voto.editar');
-    JToolBarHelper::addNew('voto.insertar');
-  }
+  //  /**
+  //   * Configura la barra de herramientas.
+  //   */
+  //  protected function addToolBar() 
+  //  {
+  //    JToolBarHelper::title(JText::_('COM_ENCUESTAS_MANAGER_VOTOS'));
+  //    JToolBarHelper::deleteList('', 'votos.delete');
+  //    JToolBarHelper::editList('voto.edit');
+  //    JToolBarHelper::addNew('voto.add');
+  //  }
 }
