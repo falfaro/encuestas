@@ -4,7 +4,7 @@ jimport('joomla.application.component.controller');
  
 // Obtiene una instancia del controlador cuyo nombre esta prefijado por el
 // literal Encuestas.
-$controller = JController::getInstance('Encuestas');
+$controller =& JController::getInstance('Encuestas');
  
 // Obtiene la tarea que se ha de ejecutar
 $jinput = JFactory::getApplication()->input;

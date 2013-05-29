@@ -16,7 +16,7 @@ class EncuestasModelVoto extends JModelAdmin
    * @return      JTable  Un objeto Table.
    * @since       2.5
    */
-  public function getTable($type = 'Voto', $prefix = 'EncuestasTable', $config = array()) {
+  public function &getTable($type = 'Voto', $prefix = 'EncuestasTable', $config = array()) {
     return JTable::getInstance($type, $prefix, $config);
   }
 
