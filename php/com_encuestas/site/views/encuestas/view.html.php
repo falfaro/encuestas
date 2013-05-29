@@ -12,7 +12,7 @@ class EncuestasViewEncuestas extends JView
   {
     // Incorpora los datos de la encuestas, obtenidos del modelo, a la vista.
     // Estos datos estaran disponibles para ser utilizados por la plantilla.
-    $this->openPolls = $this->get('Encuestas');
+    $this->encuestas = $this->get('Encuestas');
  
     // Muestra los posibles errores que se hayan encontrado.
     if (count($errors = $this->get('Errors'))) 

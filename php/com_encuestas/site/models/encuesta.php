@@ -24,12 +24,12 @@ class EncuestasModelEncuesta extends JModelItem
 
     // Determina si esta sesion de usuario ya ha votado en esta
     // encuesta.
-    $idSesion = JFactory::getSession()->getId();
+    $encuesta->id_sesion =  JFactory::getSession()->getId();
     $query = $db->getQuery(true);
     $query->select("count(*)");
     $query->from("#__votos");
     $query->where("id_encuesta=$id");
-    $query->where("id_sesion='$idSesion'");
+    $query->where("id_sesion='$encuesta->id_sesion'");
     $db->setQuery($query);
 
     $encuesta->votoPropio = ($db->loadResult() == 0) ? false : true;

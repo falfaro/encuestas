@@ -1,5 +1,9 @@
 <?php
 defined('_JEXEC') or die('Restricted access');
+
+if(JDEBUG) {
+  dump($this->encuestas, 'Encuestas');
+}
 ?>
 
 <style type="text/css">
@@ -12,20 +16,20 @@ defined('_JEXEC') or die('Restricted access');
 
 <h2>Lista de encuestas disponibles actualmente</h2>
 
-<?php if($this->openPolls): ?>
+<?php if($this->encuestas): ?>
 
 <table>
   <tr>
     <th>ID</th>
     <th>Nombre</th>
   </tr>
-  <?php foreach($this->openPolls as $openPoll): ?>
+  <?php foreach($this->encuestas as $encuesta): ?>
     <?php
-      $link = JRoute::_( "index.php?option=com_encuestas&view=encuesta&id={$openPoll->id}" );
+      $link = JRoute::_( "index.php?option=com_encuestas&view=encuesta&id={$encuesta->id}" );
     ?>
   <tr>
-     <td><a href="<?php echo $link; ?>"><?php echo $openPoll->id; ?></a></td>
-     <td><?php echo $openPoll->nombre; ?></td>
+     <td><a href="<?php echo $link; ?>"><?php echo $encuesta->id; ?></a></td>
+     <td><?php echo $encuesta->nombre; ?></td>
   </tr>
   <?php endforeach; ?>
 </table>
