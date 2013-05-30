@@ -1,24 +1,12 @@
 <?php
 defined('_JEXEC') or die('Restricted access');
-
-if(JDEBUG) {
-  dump($this->encuestas, 'Encuestas');
-}
 ?>
-
-<style type="text/css">
-  table {
-    border-collapse:separate;
-    border-spacing: 5px;
-  }
-  th, td { padding: 5px; }
-</style>
 
 <h2>Lista de encuestas disponibles actualmente</h2>
 
 <?php if($this->encuestas): ?>
 
-<table>
+<table class="category">
   <tr>
     <th>ID</th>
     <th>Nombre</th>

@@ -1,9 +1,5 @@
 <?php
 defined('_JEXEC') or die('Restricted access');
-
-if(JDEBUG) {
-  dump($this->encuesta, 'Encuesta');
-}
 ?>
 
 <h1>Encuesta <?php echo $this->encuesta->nombre; ?></h1>
