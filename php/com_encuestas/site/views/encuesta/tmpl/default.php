@@ -6,7 +6,7 @@ defined('_JEXEC') or die('Restricted access');
 
 <?php if($this->encuesta->votoPropio):?>
   <!-- No se puede votar: ya se ha votado con anterioridad. -->
-  <table>
+  <table class="category">
       <tr>
         <th>Nombre</th>
         <th># votos</th>
