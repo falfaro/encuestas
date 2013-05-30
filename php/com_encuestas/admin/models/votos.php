@@ -20,7 +20,7 @@ class EncuestasModelVotos extends JModelList
    */
   protected function getListQuery()
   {
-    $db = JFactory::getDBO();
+    $db =& JFactory::getDBO();
     $query = $db->getQuery(true);
     $query->select('id,id_encuesta,id_elemento_encuesta,id_sesion,fecha');
     $query->from('#__votos');

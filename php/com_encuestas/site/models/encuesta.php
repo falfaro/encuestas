@@ -14,7 +14,7 @@ class EncuestasModelEncuesta extends JModelItem
   {
     // Carga los detalles de la encuesta.
     $id = JRequest::getVar('id',  1);
-    $db = JFactory::getDBO();
+    $db =& JFactory::getDBO();
     $query = $db->getQuery(true);
     $query->select('*');
     $query->from('#__encuestas');
@@ -61,7 +61,7 @@ class EncuestasModelEncuesta extends JModelItem
   }
 
   public function votar($id_encuesta, $id_elemento_encuesta, $id_sesion, $fecha) {
-    $db = JFactory::getDBO();
+    $db =& JFactory::getDBO();
     $query = $db->getQuery(true);
     $query->insert("#__votos");
     $query->columns("id_elemento_encuesta,id_encuesta,id_sesion,fecha");

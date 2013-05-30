@@ -16,7 +16,7 @@ class EncuestasModelEncuestas extends JModelItem
    */
   public function getEncuestas()
   {
-    $db = JFactory::getDBO();
+    $db =& JFactory::getDBO();
     $query = $db->getQuery(true);
     $query->select('id,nombre');
     $query->from('#__encuestas');
