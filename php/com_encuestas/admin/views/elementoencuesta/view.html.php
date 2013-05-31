@@ -27,9 +27,9 @@ class EncuestasViewElementoEncuesta extends JView
 
     $this->item = $item;
     $this->form = $form;
-    	 
+
     parent::display($tpl);
-    	
+
     $document = JFactory::getDocument();
     $document->addScript(JURI::root() . 
 			 '/administrator/components/com_encuestas/models/forms/validation.js');

@@ -29,12 +29,12 @@ JHtml::_('behavior.formvalidation');
   <input type="hidden" name="boxchecked" value="0" />
   <input type="hidden" name="id_encuesta" value="<?=$this->item->id?>" />
   <?php echo JHtml::_('form.token'); ?>
-	
+
   <fieldset class="adminform">
     <legend><?=JText::_( 'Lista de los elementos de la encuesta' ); ?></legend>
 
     <?=$this->elementosEncuestasToolBar?>
-		
+
     <table class="adminlist">
       <thead>
         <tr>
@@ -55,7 +55,7 @@ JHtml::_('behavior.formvalidation');
 			$checked = '<input type="checkbox" id="cb' . $i . '" name="cid[]" value="' . $row->id
 				. '" onclick="Joomla.isChecked(this.checked, document.elementosEncuestasForm);" title="' . JText::sprintf('JGRID_CHECKBOX_ROW_N', ($i + 1)) . '" />';
 			$i++;
-			$link = JRoute::_( 'index.php?option=' . $option . '&task=task.edit&id=' . $row->id );
+			$link = JRoute::_( 'index.php?option=' . $option . '&task=elementoencuesta.edit&id=' . $row->id );
 ?>
 				<tr class="row<?=$k?>">
 					<td><?=$checked?></td>

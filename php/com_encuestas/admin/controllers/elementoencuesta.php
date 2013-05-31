@@ -16,14 +16,15 @@ class EncuestasControllerElementoEncuesta extends JControllerForm
     if (parent::add()) {
       $app = JFactory::getApplication();
       $context = "$this->option.edit.$this->context";
-			
-      $app->setUserState($context . '.id_encuesta', JRequest::getCmd('id_encuesta'));
+
+      // ID encuesta
+      $app->setUserState($context . '.id_encuesta', JRequest::getInt('id'));
 
       return true;
     }
   }
-	
-	
+
+
   public function cancel($key = null)
   {
     if (parent::cancel($key)) {

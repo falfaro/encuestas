@@ -26,7 +26,7 @@ class EncuestasControllerElementosEncuestas extends JControllerAdmin
     parent::delete();
 		
     $app = JFactory::getApplication();
-    $context = "$this->option.edit.task";
+    $context = "$this->option.edit.elementoencuesta";
 		
     $this->setRedirect(JRoute::_('index.php?option=' . $this->option . '&view=' . $this->view_list
 				 . '&layout=edit'

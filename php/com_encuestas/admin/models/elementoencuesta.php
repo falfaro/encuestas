@@ -2,7 +2,7 @@
 defined('_JEXEC') or die();
 jimport( 'joomla.application.component.modeladmin' );
 
- 
+
 class EncuestasModelElementoEncuesta extends JModelAdmin
 {	
 
@@ -28,7 +28,7 @@ class EncuestasModelElementoEncuesta extends JModelAdmin
     if (!$data->id_encuesta)
       {
 	$app = JFactory::getApplication();
-	$context = "$this->option.edit.task";
+	$context = "$this->option.edit.elementoencuesta";
 
 	$data->id_encuesta = $app->getUserState($context . '.id_encuesta');
       }

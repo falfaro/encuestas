@@ -27,20 +27,20 @@ class EncuestasViewEncuesta extends JView
 
     // Tasks actions
     $message = JText::_('JLIB_HTML_PLEASE_MAKE_A_SELECTION_FROM_THE_LIST');
-    	 
+
     $objElementosEncuestasToolBar = new JToolBar();
-    $html = "<a class=\"toolbar\" onclick=\"Joomla.submitform('elementoencuesta.add', document.elementosEncuestasForm)\" href=\"#\">";
+    $html = "<a class=\"toolbar\" onclick=\"Joomla.submitbutton('elementoencuesta.add', document.elementosEncuestasForm)\" href=\"#\">";
     $html .= "<span class=\"icon-32-new\"></span>";
     $html .= JText::_('JTOOLBAR_NEW');
     $html .= "</a>\n";    	
     $objElementosEncuestasToolBar->appendButton('Custom', $html, 'new');
-    $html = "<a class=\"toolbar\" onclick=\"if (document.elementosEncuestasForm.boxchecked.value==0){alert('$message');}else{ Joomla.submitform('elementoencuesta.edit', document.elementosEncuestasForm)}\" href=\"#\">";
+    $html = "<a class=\"toolbar\" onclick=\"if (document.elementosEncuestasForm.boxchecked.value==0){alert('$message');}else{ Joomla.submitbutton('elementoencuesta.edit', document.elementosEncuestasForm)}\" href=\"#\">";
     $html .= "<span class=\"icon-32-edit\"></span>";
     $html .= JText::_('JTOOLBAR_EDIT');
     $html .= "</a>\n";
     $objElementosEncuestasToolBar->appendButton('Custom', $html, 'edit');
     $msg = 'Confirmar borrado de elemento de la encuesta';
-    $html = "<a class=\"toolbar\" onclick=\"if (document.elementosEncuestasForm.boxchecked.value==0){alert('$message');}else{if (confirm('$msg')){Joomla.submitform('elementosencuestas.delete', document.elementosEncuestasForm);}}\" href=\"#\">";
+    $html = "<a class=\"toolbar\" onclick=\"if (document.elementosEncuestasForm.boxchecked.value==0){alert('$message');}else{if (confirm('$msg')){Joomla.submitbutton('elementosencuestas.delete', document.elementosEncuestasForm);}}\" href=\"#\">";
     $html .= "<span class=\"icon-32-delete\"></span>";
     $html .= JText::_('JTOOLBAR_DELETE');
     $html .= "</a>\n";
