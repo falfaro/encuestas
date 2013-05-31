@@ -13,7 +13,7 @@ JHtml::_('behavior.formvalidation');
 	<?php echo JHtml::_('form.token'); ?>
 	
 	<fieldset class="adminform">
-		<legend><?=JText::_( 'COM_ENCUESTAS_ENCUESTAS_DETAILS' ); ?></legend>
+		<legend>Detalles de la encuestas</legend>
 		<ul class="adminformlist">
 <?	foreach ($this->form->getFieldset() as $field) { ?>
 			<li><?=$field->label?><?=$field->input?></li>

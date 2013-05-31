@@ -11,10 +11,10 @@ class EncuestasViewEncuestas extends JView
   function display($tpl = null)
   {
     // Toolbar
-    JToolBarHelper::title( JText::_( 'COM_ENCUESTAS_ENCUESTAS' ), 'generic.png' );
+    JToolBarHelper::title('Encuestas', 'generic.png' );
     JToolBarHelper::addNewX('encuesta.add');
     JToolBarHelper::editListX('encuesta.edit');
-    JToolBarHelper::deleteList( JText::_( 'COM_ENCUESTAS_ENCUESTAS_CONFIRM_DELETE' ), 'encuestas.delete' );
+    JToolBarHelper::deleteList('Confirmar borrado', 'encuestas.delete' );
 
     $this->pagination = $this->get('Pagination');
     $this->items = $this->get('Items');

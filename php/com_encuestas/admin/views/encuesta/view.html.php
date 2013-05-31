@@ -39,7 +39,7 @@ class EncuestasViewEncuesta extends JView
     $html .= JText::_('JTOOLBAR_EDIT');
     $html .= "</a>\n";
     $objElementosEncuestasToolBar->appendButton('Custom', $html, 'edit');
-    $msg = JText::_( 'COM_ENCUESTAS_ELEMENTOS_ENCUESTAS_CONFIRM_DELETE' );
+    $msg = 'Confirmar borrado de elemento de la encuesta';
     $html = "<a class=\"toolbar\" onclick=\"if (document.elementosEncuestasForm.boxchecked.value==0){alert('$message');}else{if (confirm('$msg')){Joomla.submitform('elementosencuestas.delete', document.elementosEncuestasForm);}}\" href=\"#\">";
     $html .= "<span class=\"icon-32-delete\"></span>";
     $html .= JText::_('JTOOLBAR_DELETE');
