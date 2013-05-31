@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form addrulepath="/administrator/components/com_encuestas/models/rules">
+  <fieldset>
+    <field 
+	name="id" 
+	type="hidden"
+	/>
+    <field 
+	name="nombre"
+	type="text" 
+	label="Nombre"
+	size="32"
+	class="inputbox"
+	required="true"
+	/>
+    <field 
+	name="descripcion"
+	type="text"
+	label="Descripcion"
+	size="256"
+	class="inputbox validate-minlenght2"
+	/>
+    <field 
+	name="fecha_inicio"
+	type="calendar" 
+	label="Fecha inicio"
+	class="inputbox"
+	required="true"
+	/>
+    <field 
+	name="fecha_fin"
+	type="calendar" 
+	label="Fecha fin"
+	class="inputbox"
+	/>
+  </fieldset>
+</form>
