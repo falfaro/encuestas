@@ -46,7 +46,6 @@
                 <menu>Encuestas</menu>
 		<submenu>
 		  <menu view="encuestas">Encuestas</menu>
-		  <menu view="elementos_encuestas">Elementos de encuestas</menu>
 		  <menu view="votos">Votos</menu>
 		</submenu>
 
