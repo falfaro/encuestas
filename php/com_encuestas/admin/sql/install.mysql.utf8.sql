@@ -6,8 +6,8 @@ CREATE TABLE `#__encuestas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(32) NOT NULL,
   `descripcion` varchar(256),
-  `fecha_inicio` datetime NOT NULL,
-  `fecha_fin` datetime NULL,
+  `fecha_inicio` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `fecha_fin` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
    PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
@@ -37,7 +37,7 @@ CREATE TABLE `#__votos` (
   `id_encuesta` int(11) NOT NULL,
   `id_elemento_encuesta` int(11) NOT NULL,
   `id_sesion` varchar(256) NOT NULL,
-  `fecha` datetime NOT NULL,
+  `fecha` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
    PRIMARY KEY  (`id`),
    FOREIGN KEY  (`id_encuesta`) REFERENCES `#__encuestas` (`id`) ON DELETE CASCADE,
    FOREIGN KEY  (`id_elemento_encuesta`) REFERENCES `#__elementos_encuestas` (`id`) ON DELETE CASCADE
