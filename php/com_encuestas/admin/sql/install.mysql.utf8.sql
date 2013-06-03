@@ -7,7 +7,7 @@ CREATE TABLE `#__encuestas` (
   `nombre` varchar(32) NOT NULL,
   `descripcion` varchar(256),
   `fecha_inicio` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `fecha_fin` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `fecha_fin` datetime NOT NULL DEFAULT '9999-12-31 23:59:59',
    PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 

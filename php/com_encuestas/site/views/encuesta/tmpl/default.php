@@ -4,8 +4,9 @@ defined('_JEXEC') or die('Restricted access');
 
 <h1>Encuesta <?php echo $this->encuesta->nombre; ?></h1>
 
-<?php if($this->encuesta->votoPropio):?>
-  <!-- No se puede votar: ya se ha votado con anterioridad. -->
+<?php if($this->encuesta->encuestaCerrada):?>
+  <!-- Indica por que no es posible votar en la encuesta -->
+  <p><?=$this->encuesta->mensaje?></p>
   <table class="category">
       <tr>
         <th>Nombre</th>
