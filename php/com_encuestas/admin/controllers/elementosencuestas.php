@@ -24,7 +24,7 @@ class EncuestasControllerElementosEncuestas extends JControllerAdmin
   public function delete()
   {
     parent::delete();
-		
+
     $app = JFactory::getApplication();
     $context = "$this->option.edit.elementoencuesta";
 		

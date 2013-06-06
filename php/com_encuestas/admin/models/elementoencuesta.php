@@ -18,7 +18,6 @@ class EncuestasModelElementoEncuesta extends JModelAdmin
     }
   }
 
-
   public function loadFormData()
   {
     // Load form data
