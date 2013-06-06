@@ -4,12 +4,21 @@ jimport( 'joomla.application.component.view' );
  
 class EncuestasViewEncuesta extends JView
 {
+  // Atributos utilizados por la vista y las plantillas relacionadas.
   protected $canDo;
   protected $elementosEncuestas;
   protected $elementosEncuestasToolBar;
   protected $form;
   protected $item;
 
+  /*
+   * Metodo display() de la vista Votos
+   * @param   string  $tpl  Nombre del archivo de plantilla; busca
+   *                        automaticamente en todos los directorios de
+   *                        plantillas.
+   *
+   * @return  mixed         Una cadena, o un objeto JError en caso de error.
+   */
   function display($tpl = null) {
     // Almacena el nivel de acceso que el usuario actual tiene sobre este
     // componente.
