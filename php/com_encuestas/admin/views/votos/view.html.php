@@ -1,6 +1,7 @@
 <?php
 defined('_JEXEC') or die('Restricted access');
 jimport('joomla.application.component.view');
+
  
 /**
  * Vista Votos
@@ -29,21 +30,20 @@ class EncuestasViewVotos extends JView
     $votos = $this->get('Items');
     $pagination = $this->get('Pagination');
  
-    // Comprueba si han habido errores.
-    if (count($errors = $this->get('Errors'))) 
-      {
-	JError::raiseError(500, implode('<br />', $errors));
-	return false;
-      }
+    // Comprueba si han habido errores
+    if (count($errors = $this->get('Errors'))) {
+      JError::raiseError(500, implode('<br />', $errors));
+      return false;
+    }
 
-    // Asigna datos a la vista.
+    // Asigna datos a la vista
     $this->votos = $votos;
     $this->pagination = $pagination;
  
-    // Incluye la barra de herramientas.
+    // Incluye la barra de herramientas
     $this->addToolBar();
  
-    // Muestra la plantilla.
+    // Muestra la plantilla
     parent::display($tpl);
   }
  

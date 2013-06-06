@@ -1,9 +1,11 @@
 <?php
 defined('_JEXEC') or die('Restricted access');
- 
 jimport('joomla.application.component.view');
 
 
+/*
+ * Vista Encuestas
+ */
 class EncuestasViewEncuestas extends JViewLegacy
 {
   // Atributos utilizados por la vista y las plantillas relacionadas
@@ -22,11 +24,11 @@ class EncuestasViewEncuestas extends JViewLegacy
    */
   function display($tpl = null) {
     // Almacena el nivel de acceso que el usuario actual tiene sobre este
-    // componente.
+    // componente
     $this->canDo = EncuestasHelper::getActions();
 
     // Almacena los elementos necesarios para mostrar la lista de encuestas,
-    // asi como permitir la paginacion.
+    // asi como permitir la paginacion
     $this->pagination = $this->get('Pagination');
     $this->items = $this->get('Items');
     $this->state = $this->get('State');
@@ -34,6 +36,7 @@ class EncuestasViewEncuestas extends JViewLegacy
     // Configura la barra de herramientas
     $this->addToolBar();
 
+    // Muestra la plantilla
     parent::display($tpl);
   }
 

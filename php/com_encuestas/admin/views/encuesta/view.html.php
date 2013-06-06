@@ -21,7 +21,7 @@ class EncuestasViewEncuesta extends JView
    */
   function display($tpl = null) {
     // Almacena el nivel de acceso que el usuario actual tiene sobre este
-    // componente.
+    // componente
     $this->canDo = EncuestasHelper::getActions();
 
     // Obtiene los datos del modelo
@@ -33,6 +33,7 @@ class EncuestasViewEncuesta extends JView
     $isNew = ($this->item->id < 1);
     $this->addToolBar($isNew);
 
+    // Muestra la plantilla
     parent::display($tpl);
 
     $document = JFactory::getDocument();
@@ -50,11 +51,7 @@ class EncuestasViewEncuesta extends JView
     // Deshabilita el menu principal
     JRequest::setVar('hidemainmenu', true);
 
-    if ($isNew) {
-      JToolBarHelper::title('Nueva encuesta', 'generic.png' );
-    } else {
-      JToolBarHelper::title('Editar encuesta', 'generic.png' );
-    }
+    JToolBarHelper::title($isNew ? 'Nueva encuesta' : 'Editar encuesta', 'generic.png');
 
     // Configura las acciones de la barra de herramientas anidada, asociada a
     // los elementos de la encuesta
