@@ -51,9 +51,12 @@
 
                 <files folder="admin">
                         <!-- Admin Main File Copy Section -->
+                        <filename>access.xml</filename>
+			<filename>config.xml</filename>
                         <filename>controller.php</filename>
                         <folder>controllers</folder>
                         <filename>encuestas.php</filename>
+			<folder>helpers</folder>
                         <filename>index.html</filename>
                         <folder>models</folder>
                         <folder>sql</folder>
