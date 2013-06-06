@@ -55,7 +55,7 @@ JHtml::_('behavior.formvalidation');
 			$checked = '<input type="checkbox" id="cb' . $i . '" name="cid[]" value="' . $row->id
 				. '" onclick="Joomla.isChecked(this.checked, document.elementosEncuestasForm);" title="' . JText::sprintf('JGRID_CHECKBOX_ROW_N', ($i + 1)) . '" />';
 			$i++;
-			$link = JRoute::_( 'index.php?option=' . $option . '&task=elementoencuesta.edit&id=' . $row->id );
+			$link = JRoute::_( 'index.php?option=' . $option . '&task=elementoencuesta.edit&id=' . $row->id . '&id_encuesta=' . $this->item->id);
 ?>
 				<tr class="row<?=$k?>">
 					<td><?=$checked?></td>

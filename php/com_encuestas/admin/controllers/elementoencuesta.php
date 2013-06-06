@@ -5,14 +5,12 @@ jimport('joomla.application.component.controllerform');
 
 class EncuestasControllerElementoEncuesta extends JControllerForm
 {
-  public function __construct($config = array())
-  {
+  public function __construct($config = array()) {
     $this->view_list = 'encuesta';
     parent::__construct($config);
   }
 
-  public function add()
-  {
+  public function add() {
     if (parent::add()) {
       $app = JFactory::getApplication();
       $context = "$this->option.edit.$this->context";
@@ -24,9 +22,19 @@ class EncuestasControllerElementoEncuesta extends JControllerForm
     }
   }
 
+  public function edit($key = null, $urlVar = null) {
+    if (parent::edit($key, $urlVar)) {
+      $app = JFactory::getApplication();
+      $context = "$this->option.edit.$this->context";
 
-  public function cancel($key = null)
-  {
+      // ID encuesta
+      $app->setUserState($context . '.id_encuesta', JRequest::getInt('id_encuesta'));
+
+      return true;
+    }
+  }
+
+  public function cancel($key = null) {
     if (parent::cancel($key)) {
       // Set right layout
       $app = JFactory::getApplication();
@@ -48,8 +56,7 @@ class EncuestasControllerElementoEncuesta extends JControllerForm
   }
 
 
-  public function save($key = null, $urlVar = null)
-  {
+  public function save($key = null, $urlVar = null) {
     if (parent::save($key, $urlVar)) {
       $task = $this->getTask();
 

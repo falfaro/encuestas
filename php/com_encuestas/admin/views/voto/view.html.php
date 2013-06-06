@@ -54,6 +54,8 @@ class EncuestasViewVoto extends JView
     // Deshabilita el menu principal
     JRequest::setVar('hidemainmenu', true);
    
+    $isNew = ($this->item->id < 1);
+
     JToolBarHelper::title($isNew ? 'Nuevo voto' : 'Editar voto', 'generic.png');
 
     // Configura las acciones de la barra de herramientas anidada, asociada a
