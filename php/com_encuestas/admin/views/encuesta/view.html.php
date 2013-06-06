@@ -54,7 +54,7 @@ class EncuestasViewEncuesta extends JView
 
     if ($this->canDo->get('core.create')) {
       JToolBarHelper::save2new('encuesta.save2new');
-      $html = "<a class=\"toolbar\" onclick=\"Joomla.submitform('elementoencuesta.add', document.elementosEncuestasForm)\" href=\"#\">";
+      $html = "<a class=\"toolbar\" onclick=\"Joomla.submitbutton('elementoencuesta.add')\" href=\"#\">";
       $html .= "<span class=\"icon-32-new\"></span>";
       $html .= JText::_('JTOOLBAR_NEW');
       $html .= "</a>\n";    	
