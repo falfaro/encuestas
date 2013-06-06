@@ -13,12 +13,6 @@ class EncuestasViewEncuestas extends JViewLegacy
   protected $state;
 
   function display($tpl = null) {
-    //    // Toolbar
-    //    JToolBarHelper::title('Encuestas', 'generic.png' );
-    //    JToolBarHelper::addNewX('encuesta.add');
-    //    JToolBarHelper::editListX('encuesta.edit');
-    //    JToolBarHelper::deleteList('Confirmar borrado', 'encuestas.delete' );
-
     // Almacena el nivel de acceso que el usuario actual tiene sobre este
     // componente.
     $this->canDo = EncuestasHelper::getActions();
